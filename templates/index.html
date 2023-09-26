@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Classifier</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #000000; /* Set background color to black */
+            color: white; /* Set text color to white */
+        }
+
+        .container {
+            width: 50%;
+            margin: 0 auto;
+            padding: 50px;
+            text-align: center;
+        }
+
+        h1 {
+            padding: 50px 0;
+        }
+
+        form {
+            padding: 10px 0;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        #image-upload-label {
+            background-color: #000000; /* Set button background color to black */
+            color: white; /* Set button text color to white */
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 10px;
+            border: #ffffff 3px solid; /* Add a white border to the button */
+            display: inline-block; /* Add this line to make the label visible */
+        }
+
+        button[type="submit"] {
+            background-color: #000000; /* Set button background color to black */
+            color: white; /* Set button text color to white */
+            padding: 10px 20px;
+            cursor: pointer;
+            border: 3px solid white; /* Add a white border to the button */
+            border-radius: 10px;
+        }
+
+        #result {
+            padding: 20px;
+            border: #ffffff 0px solid;
+            background-color: #000000; /* Set background color for result div to black */
+            color: white; /* Set text color for result div to white */
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <div class="container">
+            <h1>Image Classifier</h1>
+            <form id="upload-form" enctype="multipart/form-data">
+                <label for="image-upload" id="image-upload-label">Select an Image</label>
+                <input type="file" name="image" id="image-upload" accept="image/*" />
+                <br/><br/><br/>
+                <button type="submit" id="classify-button">Classify</button>
+                <br/><br/><br/>
+
+            </form>
+            <div id="result"></div>
+        </div>
+        <script src="{{ url_for('static', filename='script.js') }}"></script>
+        <script>
+            const uploadButton = document.getElementById('image-upload-label');
+            const classifyButton = document.getElementById('classify-button');
+            const resultDiv = document.getElementById('result');
+
+            uploadButton.addEventListener('mouseover', () => {
+                uploadButton.style.color = '#ffc663' ;
+                uploadButton.style.borderColor = '#ffc663';
+            });
+        
+            uploadButton.addEventListener('mouseout', () => {
+                uploadButton.style.color = '#ffffff'; // Revert text color to white
+                uploadButton.style.borderColor = '#ffffff'; // Revert border color to white
+            });
+        
+            classifyButton.addEventListener('mouseover', () => {
+                classifyButton.style.color = '#ffc663'; // Change text color to amber
+                classifyButton.style.borderColor = '#ffc663'; // Change border color to amber
+            });
+        
+            classifyButton.addEventListener('mouseout', () => {
+                classifyButton.style.color = '#ffffff'; // Revert text color to white
+                classifyButton.style.borderColor = '#ffffff'; // Revert border color to white
+            });
+
+            resultDiv.addEventListener('DOMNodeInserted', () => {
+                resultDiv.style.border = '#ffffff 3px solid';
+            });
+
+            resultDiv.addEventListener('DOMNodeRemoved', () => {
+                resultDiv.style.border = '#ffffff 0px solid';
+            });
+        </script>
+    </center>
+</body>
+</html>

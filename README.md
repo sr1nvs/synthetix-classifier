@@ -1,1 +1,1 @@
-# synthetix-classifier
+# image-classifier
