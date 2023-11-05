@@ -12,9 +12,9 @@ The CNN is trained on a custom dataset of household images that contain both har
 ## Usage
 
 1. clone this repository
-2. run '''app.py'''
-3. go to [localhost:5000](localhost:5000)
-4. upload your image
-5. classify
+2. run app.py
+6. go to [localhost:5000](localhost:5000)
+7. upload your image
+8. classify
 
 
